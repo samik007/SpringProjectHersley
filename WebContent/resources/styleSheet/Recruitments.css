@@ -1,0 +1,36 @@
+.inputs{
+	clear: both;
+	font-family: Audrey;
+	font-size: medium;
+	color: white;
+	padding-left: 0px;
+}
+
+.inputs input[type=text]{
+	border: 1px solid black;
+	color: black;
+	height: 25px;
+	width: 190px;
+	opacity: 0.5; 
+}
+
+.inputs input[type=text]:focus{
+	background-color: #dddddd;
+}
+
+.button{
+	background-color: #804040;
+	color: white;
+	font-family: Audrey;
+	font-size: medium;
+	padding: 10px 10px;
+	border-radius: 4px;
+	cursor: pointer;
+	height: 40px;
+	opacity: 0.7; 
+	border: 1px solid white;
+}
+
+.button:HOVER{
+	opacity: 1.0; 
+}

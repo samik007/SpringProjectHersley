@@ -1,0 +1,143 @@
+.*{
+	margin: 0px;
+	padding: 0px;
+}
+
+body{
+	background-image: url("../images/body.jpg");
+}
+
+.header{
+	margin: 0px auto;
+	width: 950px;
+	height: 80px;
+	border: 1px solid white;  
+	padding-bottom: 10px;
+	top: 20px;
+	position: relative;
+}
+
+.header h1{
+	text-align: left;
+	padding-left: 10px;
+	color: white;
+	font-family: Audrey;
+	font-size: 40px;
+	font-weight: bold;
+}
+
+.wrapper{
+	margin: 0px auto;
+	width: 950px;
+	height: 500px;
+	border: 1px solid white; 
+	top: 20px;
+	position: relative;
+}
+
+.inputs{
+	clear: both;
+	font-family: Audrey;
+	font-size: medium;
+	color: white;
+	padding-left: 10px;
+	padding-top: 10px;
+}
+
+.inputs input[type=text]{
+	border: 1px solid black;
+	color: black;
+	height: 25px;
+	width: 190px;
+	opacity: 0.5; 
+}
+
+.inputs input[type=email]{
+	border: 1px solid black;
+	color: black;
+	height: 25px;
+	width: 190px;
+	opacity: 0.5; 
+}
+
+.inputs select{
+	border: 1px solid black;
+	color: black;
+	height: 25px;
+	width: 190px;
+	opacity: 0.5; 
+}
+
+.inputs textarea{
+	border: 1px solid black;
+	color: black;
+	height: 25px;
+	width: 186px;
+	opacity: 0.5; 
+}
+
+.inputs input[type=text]:focus{
+	background-color: #dddddd;
+}
+
+.inputs input[type=email]:focus{
+	background-color: #dddddd;
+}
+
+.inputs textarea:focus{
+	background-color: #dddddd;
+}
+
+.inputs select:focus{
+	background-color: #dddddd;
+}
+
+.inputs input[type=text]::placeholder{
+	padding-left: 10px;
+}
+
+.inputs input[type=email]::placeholder{
+	padding-left: 10px;
+}
+
+.inputs textarea::placeholder{
+	padding-left: 10px;
+}
+
+.button{
+	background-color: #804040;
+	color: white;
+	font-family: Audrey;
+	font-size: medium;
+	padding: 10px 10px;
+	border-radius: 4px;
+	cursor: pointer;
+	height: 40px;
+	opacity: 0.7; 
+	border: 1px solid white;
+}
+
+.button:HOVER{
+	opacity: 1.0; 
+}
+
+.inputs #spanNameId, #spanPasswordId{
+	color: white;
+	font-family: Audrey;
+	padding-left: 10px;
+}
+
+.inputs article{
+	float; left;
+	margin: 0px;
+	padding: 0px;
+}
+
+.inputs article footer{
+	margin: 0px;
+	padding-right: 10px;
+	font-style: italic;
+	font-weight: bold;
+	text-align: left;
+	padding-left: 60px;
+}

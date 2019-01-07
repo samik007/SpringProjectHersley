@@ -1,0 +1,102 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:mvc="http://www.springframework.org/schema/mvc"
+xmlns:tx="http://www.springframework.org/schema/tx"
+xmlns:aop = "http://www.springframework.org/schema/aop"
+xmlns:context="http://www.springframework.org/schema/context"
+xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+                    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd     
+                    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+                    http://www.springframework.org/schema/aop 
+    				http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+		
+	<mvc:annotation-driven />
+		
+	<mvc:interceptors>
+		<bean class="com.samik.maintenance.MaintenanceDayInterceptor" ></bean>
+	</mvc:interceptors>
+		
+	<context:component-scan base-package="com.samik.centralController" />	
+	<context:component-scan base-package="com.samik.loginController" /> 
+	<context:component-scan base-package="com.samik.DbController" />  
+	<context:component-scan base-package="com.samik.globalExceptionController" />
+	<context:component-scan base-package="com.samik.feedbackController" />
+	<context:component-scan base-package="com.samik.admissionController" />
+	<context:component-scan base-package="com.samik.trainingController" />
+	<context:component-scan base-package="com.samik.aboutController" />
+	<context:component-scan base-package="com.samik.ajaxController" />
+	<context:component-scan base-package="com.samik.newAdmission" />
+	<context:component-scan base-package="com.samik.searchController" />
+	<context:component-scan base-package="com.samik.servlet" />
+	<context:component-scan base-package="com.samik.restController" />
+	
+	<bean id = "customerService" class = "com.samik.loginController.CustomerService"></bean>
+	<bean id = "registerCustomer" class = "com.samik.loginController.RegisterCustomer"></bean>
+	<bean id = "customer" class = "com.samik.loginController.Customer"></bean>
+	<bean id = "feedbackData" class = "com.samik.feedbackController.FeedbackData"></bean>
+	<bean id = "feedbackService" class = "com.samik.feedbackController.FeedbackService"></bean>
+	<bean id = "aboutService" class = "com.samik.aboutController.AboutService"></bean>
+	<bean id = "officialInfoService" class = "com.samik.ajaxController.OfficialInfoService"></bean>
+	<bean id = "officialData" class = "com.samik.ajaxController.OfficialData"></bean>
+	<bean id = "classTenDetails" class = "com.samik.newAdmission.ClassTenDetails"></bean>
+	<bean id = "newAdmissionService" class = "com.samik.newAdmission.NewAdmissionService"></bean>
+	<bean id = "classTwelveDetails" class = "com.samik.newAdmission.ClassTwelveDetails"></bean>
+	<bean id = "fatherIncomeDetail" class = "com.samik.newAdmission.FatherIncomeDetail"></bean>
+	<bean id = "scholarship" class = "com.samik.newAdmission.Scholarship"></bean>
+	<bean id = "studentExchangeDetail" class = "com.samik.newAdmission.StudentExchangeDetail"></bean>
+	<bean id = "examDetails" class = "com.samik.newAdmission.ExamDetails"></bean>
+	<bean id = "masterdata" class = "com.samik.newAdmission.Masterdata"></bean>
+	<bean id = "searchService" class = "com.samik.searchController.SearchService"></bean>
+	<bean id = "general" class = "com.samik.searchController.General"></bean>
+	<bean id = "student" class = "com.samik.servlet.Student"></bean>
+	<bean id = "fetchFromStoredProc" class = "com.samik.servlet.FetchFromStoredProc"></bean>
+	<bean id = "userDetails" class = "com.samik.restController.UserDetails"></bean>
+	<bean id = "hobby" class = "com.samik.restController.Hobby"></bean>
+	<bean id = "address" class = "com.samik.restController.Address"></bean>
+	
+	<aop:aspectj-autoproxy/>
+	<context:component-scan base-package="com.samik.aspect">
+		<context:include-filter type="aspectj"
+				expression="com.samik.aspect.LoggingAspect" />
+	</context:component-scan>
+	
+    <bean id="viewResolver"
+    	class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+        <property name="prefix">
+            <value>/WEB-INF/Jsp_Base_Pages/</value>
+        </property>
+        <property name="suffix">
+            <value>.jsp</value>
+        </property>
+    </bean>
+    
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+    
+    <bean id="dataSource" 
+      class = "org.springframework.jdbc.datasource.DriverManagerDataSource">
+      <property name = "driverClassName" value = "oracle.jdbc.driver.OracleDriver"/>
+      <property name = "url" value = "jdbc:oracle:thin:@localhost:1521:xe"/>
+      <property name = "username" value = "system"/>
+      <property name = "password" value = "samik"/>
+   </bean>
+   <bean id = "customerJDBCTemplate" 
+      class = "com.samik.DbController.CustomerJDBCTemplate">
+      <property name = "dataSource" ref = "dataSource" />    
+   </bean>
+   
+   <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">  
+		<property name="dataSource" ref="dataSource" />  
+        <property name="packagesToScan" value="com.samik.restController" />
+          
+        <property name="hibernateProperties">  
+            <props>  
+                <prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>  
+                <prop key="hibernate.hbm2ddl.auto">create</prop>  
+                <prop key="hibernate.show_sql">true</prop>
+            </props>  
+        </property>
+   </bean>
+
+</beans>
+
